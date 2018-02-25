@@ -21,5 +21,7 @@ admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('skills/',views.my_view),
+    path('', include('django.contrib.auth.urls')),
+    path('accounts/profile/',views.my_view),
+    
 ]

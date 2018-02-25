@@ -4,15 +4,16 @@ from django.db import models
 
         
 class Department(models.Model):
-    id = models.IntegerField(primary_key=True)
+   
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=10)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'department'
         
 class Employee(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=10)
     department = models.ForeignKey(Department, models.DO_NOTHING, blank=True, null=True)
 
@@ -21,7 +22,7 @@ class Employee(models.Model):
         db_table = 'employee'        
         
 class EmpSkills(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     year = models.IntegerField(blank=True, null=True)
     quarter = models.IntegerField(blank=True, null=True)
     employee = models.ForeignKey('Employee', models.DO_NOTHING)
@@ -38,7 +39,7 @@ class EmpSkills(models.Model):
 
 
 class Skill(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=10)
 
     class Meta:
