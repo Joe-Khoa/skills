@@ -18,6 +18,10 @@ from skills import views
 from django.urls import path,include
 
 admin.autodiscover()
+admin.site.site_header = 'Skills Administration' 
+admin.site.index_title = ('Skills Admin') 
+admin.site.site_title = ('Skills Admin page')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
