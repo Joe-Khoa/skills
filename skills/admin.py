@@ -1,14 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import Skill
-from .models import Employee
+from .models import CustomModelAdmin
 from .models import Department
 from .models import EmpSkills
-from .models import MySpecialAdmin
+from .models import Employee
+from .models import Skill
 
-admin.site.register(Skill,MySpecialAdmin(Skill))
-admin.site.register(Employee,MySpecialAdmin(Employee))
-admin.site.register(EmpSkills,MySpecialAdmin(EmpSkills))
-admin.site.register(Department, MySpecialAdmin(Department))
+
+# Register your models here.
+admin.site.register(Skill,CustomModelAdmin)
+admin.site.register(Employee,CustomModelAdmin)
+admin.site.register(EmpSkills,CustomModelAdmin)
+admin.site.register(Department, CustomModelAdmin)
 
