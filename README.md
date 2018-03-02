@@ -2,7 +2,8 @@
 Python Django Charts pygal sqllite3 rest_framework
 
 
-Links that help me build the app
+Links that help me build the app <br>
+
 https://simpleisbetterthancomplex.com/
 https://gist.github.com/leriomaggio/af365c659e9fefc0380a
 https://hackernoon.com/server-rendered-charts-in-django-2604f903389d
