@@ -23,12 +23,12 @@ admin.autodiscover()
 admin.site.site_header = 'Skills Administration' 
 admin.site.index_title = ('Skills Admin') 
 admin.site.site_title = ('Skills Admin page')
-
+admin.site.site_url='/accounts/profile/'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('', include('django.contrib.auth.urls')),
-    path('accounts/profile/',views.my_view),
-    
+    path('accounts/profile/',views.my_view, name='home'),
+    path('skills/emp_skills_list/',views.emp_skills,name='emp_skills'),
     
 ]

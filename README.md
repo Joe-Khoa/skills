@@ -8,6 +8,8 @@ https://simpleisbetterthancomplex.com/
 https://gist.github.com/leriomaggio/af365c659e9fefc0380a
 https://hackernoon.com/server-rendered-charts-in-django-2604f903389d
 https://stackoverflow.com/questions/6583877/how-to-override-and-extend-basic-django-admin-templates
+https://www.youtube.com/watch?v=gMM1rtTwKxE
+https://tutorial.djangogirls.org/en/css/
 
 Install requierments
 
