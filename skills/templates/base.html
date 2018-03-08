@@ -20,6 +20,7 @@
         <ul id="nav" class="top-menu" >
             {% block nav-home %}<a href="{% url 'home' %}">Home</a>{% endblock %}|
             {% block nav-empSkills %}<a href="{% url 'emp_skills' %}">Empp Skills</a>{% endblock %}|
+            {% block nav-rest_emp %}<a href="{% url 'rest_emp' %}">Django Rest Frm Employees</a>{% endblock %}|
             {% block nav-admin %}<a href="/admin">Admin</a>{% endblock %}|
             {% block nav-logout %}<a href="{% url 'logout' %}">Logout</a>{% endblock %}
         </ul>

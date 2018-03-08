@@ -1,7 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator
-from .models import EmpSkills
+from .models import EmpSkills,Employee
+from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import employeesSerializers 
 
 
 
@@ -21,6 +26,15 @@ def emp_skills(request):
     page = request.GET.get('page')
     emp_skills_list = paginator.get_page(page)
     return render(request, 'skills/emp_skills_list.html', {'list': emp_skills_list})
+
+class employeeList(APIView):
     
+    def get(self,request):
+        employees=Employee.objects.all()
+        serializer=employeesSerializers(employees,many=True)
+        return Response(serializer.data)
+        
+    def post(self):  
+        pass  
     
 
