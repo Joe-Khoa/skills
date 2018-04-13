@@ -16,6 +16,9 @@ https://www.youtube.com/watch?v=gMM1rtTwKxE
 
 https://tutorial.djangogirls.org/en/css/
 
+https://django-crudbuilder.readthedocs.io/en/latest/overview.html
+
+
 Install requierments
 
 pip install django
@@ -23,4 +26,6 @@ pip install sqllite3
 pip install pygal
 pip install lxml
 pip install djangorestframework
+pip install django-tables2
+pip install django-crudbuilder
  

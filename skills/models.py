@@ -43,17 +43,16 @@ class Employee(models.Model):
         return  self.name
      
     department = models.ForeignKey(Department, models.DO_NOTHING, blank=True, null=True)
-    def empSkills(self):
-        return EmpSkills.objects.filter(employee=self)
+    
    
     def get_data(self):
          
         bar_chart=pygal.Bar() 
-        bar_chart.title = 'Employee grades  average per quarter'
+        bar_chart.title = self.name +'  average per quarter'
     
        
         data = defaultdict(list)
-        for empSkill in Employee.empSkills(self):
+        for empSkill in EmpSkills.objects.filter(employee=self):
             data[str(empSkill.year) + " Q"+ str(empSkill.quarter)].append(empSkill.grade)
         
         for key,value in data.items():
@@ -102,7 +101,7 @@ class EmpSkills(models.Model):
 class Skill(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=10)
-
+    get_data=URLField()
     class Meta:
         managed = False
         db_table = 'skill'
@@ -111,14 +110,24 @@ class Skill(models.Model):
          return  self.name   
      
     def get_data(self):
-        """ 
-        Fake Method to generate random data.
-        In the real case, this method should arrange
-        data to be plotted according to model instance
-        fields' values.
-        """
-        return random_sample(5) 
-     
+         
+         
+        bar_chart=pygal.Bar() 
+        bar_chart.title = self.name +'  average per quarter'
+    
+       
+        data = defaultdict(list)
+        for empSkill in EmpSkills.objects.filter(skill=self):
+            data[str(empSkill.year) + " Q"+ str(empSkill.quarter)].append(empSkill.grade)
+        
+        for key,value in data.items():
+            bar_chart.add(key, numpy.mean(value)) 
+            
+        # Add data to chart
+        
+           
+       
+        return mark_safe('<img src="%s" width="750" height="550" />' % (bar_chart.render_data_uri()))
  
         
   
