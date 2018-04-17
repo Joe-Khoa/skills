@@ -43,6 +43,11 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
+
+table, th, td,tr {
+    border: 1px solid black;
+}
+
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
@@ -58,4 +63,8 @@ h1, h2, h3, h4 {
     background-color: purple;
     color: white;
     text-align: center;
+}
+
+th, td,tr {
+    padding: 15px;
 }

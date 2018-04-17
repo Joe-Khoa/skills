@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 {% block nav-home %}<strong class="nav-active">Home</strong>{% endblock %}
-{% block title %}Employee Skills List{% endblock %}
-
+{% block title %}Home{% endblock %}
+{% load staticfiles %}
 {% block content %}
-  <a href="/skills/emp_skills_list">Employee Skills Page</a>
+<table>
+  <th>
+  <img src="{% static 'image/stavros.jpg' %}" height="220" width="200" alt="My image"/>
+  </th>
+  <th >
+   <strong ><h1>Stavros Nikolaou</h1> 
+   <h3>Software Developer</h3>
+   <h4>APOEL FC FUN </h4>
+   <h4>Swimming ~ Stand Up Paddling</h4>
+   <h4>Hard Worker !!!!!</h4>
+   <h4>Traveller !!!!!</h4>
+   </strong>
+  </th>
+</table>  
+  
 {% endblock %}
