@@ -7,6 +7,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import employeesSerializers 
+from .forms import EmppSkillsForm
+import requests
 
 
 
@@ -15,7 +17,29 @@ from .serializers import employeesSerializers
 # Create your views here.
 @login_required
 def my_view(request):
-    return render(request,'home.html', context=None)
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=2ac3ec34f1ed7bfc53718ba5b3ae3800'
+    cities =['London','New York']
+    weather_data = []
+
+    for city in cities:
+
+        r = requests.get(url.format(city)).json()
+       
+        city_weather = {
+            'city' : city,
+            'temperature' : r['main']['temp'],
+            'description' : r['weather'][0]['description'],
+            'icon' : r['weather'][0]['icon'],
+        }
+
+        weather_data.append(city_weather)
+
+    context = {'weather_data' : weather_data}
+    
+    
+    
+    
+    return render(request,'home.html', context)
 
 @login_required
 def emp_skills(request):
@@ -36,6 +60,7 @@ class employeeList(APIView):
         
     def post(self):  
         pass  
+    
 from django.http import HttpResponseRedirect    
 from crudbuilder.views import ViewBuilder
 from crudbuilder.helpers import reverse
@@ -69,14 +94,14 @@ class MyCustomEmpSkillsDetailView(EmpSkillsDetailView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        # form = YourAnotherForm(request.POST)
-        # if form.is_valid():
+        form = EmppSkillsForm(request.POST)
+        if form.is_valid():
             # Do your custom logic here
-        #    pass
+            pass
         return HttpResponseRedirect(
             reverse(
                 'person-detail',
-                args=[self.object.pk]
+                args=[self.object.employee]
             )
         )
 
@@ -84,7 +109,7 @@ class MyCustomEmpSkillsDetailView(EmpSkillsDetailView):
 class MyCustomEmpSkillsCreateView(EmpSkillsCreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
-        instance.created_by = self.request.user
+        # instance.created_by = self.request.user
         instance.save()
         # # your custom logic goes here
         return HttpResponseRedirect(reverse('mycustom-people'))    

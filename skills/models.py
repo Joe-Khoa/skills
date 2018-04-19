@@ -76,9 +76,14 @@ class EmpSkills(models.Model):
     id = models.AutoField(primary_key=True)
     year = models.IntegerField(blank=True, null=True)
     quarter = models.IntegerField(blank=True, null=True)
-    employee = models.ForeignKey('Employee', models.DO_NOTHING, blank=True, null=True)
-    skill = models.ForeignKey('Skill', models.DO_NOTHING, blank=True, null=True)
+    employee = models.ForeignKey('Employee', models.DO_NOTHING, blank=False, null=False)
+    skill = models.ForeignKey('Skill', models.DO_NOTHING, blank=False, null=False)
     grade = models.IntegerField()
+    
+    def __str__(self):
+        return  self.employee.__str__() + ' ' + self.skill.__str__() 
+     
+     
     
     def get_data(self):
         """ 

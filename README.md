@@ -18,6 +18,8 @@ https://tutorial.djangogirls.org/en/css/
 
 https://django-crudbuilder.readthedocs.io/en/latest/overview.html
 
+https://github.com/PrettyPrinted/weather_app_django
+
 
 Install requierments
 
@@ -28,4 +30,6 @@ pip install lxml
 pip install djangorestframework
 pip install django-tables2
 pip install django-crudbuilder
+pip install requests
+
  

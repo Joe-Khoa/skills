@@ -3,7 +3,7 @@ from .models import EmpSkills
 
 class EmpSkillsCrud(BaseCrudBuilder):
     model=EmpSkills
-    search_fields = ['employee__name']
+    search_fields = ['employee__name','skill']
     tables2_fields = ('year', 'quarter','employee','skill','grade')
     tables2_css_class = "table table-bordered table-condensed"
     tables2_pagination = 5  # default is 10
