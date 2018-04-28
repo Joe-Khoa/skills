@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block nav-zen %}<strong class="nav-active">Zen</strong>{% endblock %}
+{% block title %}Zen of Python{% endblock %}
+{% load staticfiles %}
+{% block content %}
+
+ <h4>{{ zen|safe}}</h4>
+{% endblock %}

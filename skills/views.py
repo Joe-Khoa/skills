@@ -8,7 +8,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import employeesSerializers 
 from .forms import EmppSkillsForm
-import requests
+import requests  
+import this
+
 
 
 
@@ -16,20 +18,51 @@ import requests
 
 # Create your views here.
 @login_required
+def zen_view(request):
+    zen="".join([this.d.get(this.c, this.c) for this.c in this.s])
+    
+    context = {'zen' :zen.replace('\n', '<br>')}
+    return render(request,'skills/zen.html', context)
+
+
+
+@login_required
 def my_view(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=2ac3ec34f1ed7bfc53718ba5b3ae3800'
-    cities =['London','New York']
+    london ={'city' : 'London',
+            'time' : '<iframe src="http://free.timeanddate.com/clock/i67tg22t/n136/fcf0f/tcf90/pc9f0/ftbi/th2" frameborder="0" width="122" height="18"></iframe>'
+             }
+    
+    newYork ={'city' : 'New York',
+            'time' : '<iframe src="http://free.timeanddate.com/clock/i67tg22t/n179/tcf90/pc9f0/ftbi/th2" frameborder="0" width="122" height="18"></iframe>'
+             }
+   
+    berlin ={'city' : 'Berlin',
+            'time' : '<iframe src="http://free.timeanddate.com/clock/i67tg22t/n37/tcf90/pc9f0/ftbi/th2" frameborder="0" width="122" height="18"></iframe>'
+             }
+    
+    paris ={'city' : 'Paris',
+            'time' : '<iframe src="http://free.timeanddate.com/clock/i67tg22t/n37/tcf90/pc9f0/ftbi/th2" frameborder="0" width="122" height="18"></iframe>'
+             }
+    cities = []
+    cities.append(london)
+    cities.append(newYork)
+    cities.append(berlin)
+    cities.append(paris)
+    
     weather_data = []
 
     for city in cities:
 
-        r = requests.get(url.format(city)).json()
+        r = requests.get(url.format(city['city'])).json()
        
         city_weather = {
-            'city' : city,
+            'city' : city['city'],
             'temperature' : r['main']['temp'],
             'description' : r['weather'][0]['description'],
             'icon' : r['weather'][0]['icon'],
+            'time' :city['time']
+
         }
 
         weather_data.append(city_weather)

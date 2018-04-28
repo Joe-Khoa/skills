@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 {% load staticfiles %}
 {% block content %}
-<table class="content">
+<table >
   <th>
   <img src="{% static 'image/stavros.jpg' %}" height="220" width="200" alt="My image"/>
   </th>
@@ -16,12 +16,11 @@
    <h4>Traveller !!!!!</h4>
    </strong>
   </th>
+   {% for city_weather in weather_data %}
   <th>
-   
-                <div>
-                    {% for city_weather in weather_data %}
-                    <div >
-                        <article >
+      <div>
+           <div>
+                 <article >
                             
                             <div >
                                 <div >
@@ -30,18 +29,22 @@
                                         <br>
                                         <span >{{ city_weather.temperature }} F</span>
                                         <br> {{ city_weather.description }}
-                                        <br>  <figure >
-                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
-                                </figure>
+                                        <br>  
+                                      <figure >
+                                         <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                      </figure>
+                                      <br>  {{ city_weather.time | safe }}
                                     </p>
                                 </div>
                             </div>
                         </article>
                     </div>
-                    {% endfor %}
                 </div>
-         
+                
+      
   </th>
+   {% endfor %}
+  
 </table>  
   
 {% endblock %}

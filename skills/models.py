@@ -5,8 +5,7 @@ from django.urls import path
 from django.utils.safestring import mark_safe
 from numpy.random import random_sample
 import pygal
-from pygal.style import DarkStyle
-import pandas as pd
+
 from collections import defaultdict
 
 import numpy
